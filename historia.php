@@ -13,18 +13,9 @@
 	
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 	
-	include_once("connect.php");
-	
-
-	if(isset($_POST['button']))
-	{	
-		$tuote = $_POST["tyyppi"];
-		$hinta = $_POST["hinta"];
-		$date = date("Y-m-d");
-		
-		$insert = new kustannukset();
-		$insert->connect();
-		$insert->insert_into($tuote, $hinta, $date);
+	if(isset($_GET['Koti'])){
+		 $home = new USER();
+		 $home->redirect("kustannukset.php");
 	}
 
 ?>
@@ -45,10 +36,11 @@
     <link href="CSS/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="CSS/viewport-bug-workaround.css" rel="stylesheet">
+    <link href="viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="CSS/starter-template.css" rel="stylesheet">
+	<link href="CSS/dashboard.css" rel="stylesheet">
 
   </head>
 
@@ -67,37 +59,24 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Koti</a></li>
-            <li><a href="historia.php">Historia</a></li>
+            <li ><a href="kustannukset.php">Koti</a></li>
+            <li class="active"><a href="#about">Historia</a></li>
 			<li><a href="logout.php?logout=true">Kirjaudu ulos</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
-    <div class="container">
-
-      <div class="starter-template">
-        <h1>Syötä ostoksesi</h1>
-        <p class="lead">
-		
-
-		<form method="post">
-			Tuotteen tyyppi:<br>
-				<input type="text" name="tyyppi">
-					<br><br>
-			Hinta:
-				<br>
-					<input type="text" name="hinta">
-				<br><br>
-
-					<input value="Lähetä"type="submit" name="button" class="btn btn-primary">
-		</p>
-	
-      </div>
-
-    </div><!-- /.container -->
-
+<h2 class="sub-header">Ostokset</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+              
+<?php 
+	include_once("connect.php");
+	$print = new kustannukset();
+	$print->connect();
+	$print->read();
+?> 
+	</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

@@ -29,9 +29,9 @@ if(isset($_POST['btn-login']))
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Kirjaudu sisään</title>
-<link href="bootstrap.min.css" rel="stylesheet" media="screen">
-<link href="bootstrap-theme.min.css" rel="stylesheet" media="screen">
-<link rel="stylesheet" href="style.css" type="text/css"  />
+<link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="CSS/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" href="CSS/style.css" type="text/css"  />
 </head>
 <body>
 
@@ -72,6 +72,8 @@ if(isset($_POST['btn-login']))
             <button type="submit" name="btn-login" class="btn btn-primary"">
                 	 Kirjaudu sisään
             </button>
+			 
+			 <label>Don't have account yet ! <a href="sign-up.php">Sign Up</a></label>
         </div>  
       
            
